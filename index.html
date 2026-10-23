@@ -103,6 +103,7 @@
   .tag.warn { background: var(--warn-bg); color: var(--warn); }
   .tag.t-web { background: rgba(76, 100, 217, .12); color: #2f5fcc; }
   .tag.t-mkt { background: rgba(223, 94, 45, .14); color: #8f3a17; }
+  .tag.t-app { background: rgba(21, 31, 71, .1); color: #151f47; }
 
   /* Tables */
   .tabla { overflow-x: auto; margin: 12px 0 8px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255, 255, 255, .45); }
@@ -184,6 +185,12 @@
     .rules li .tag { grid-column: 2; justify-self: start; }
     th, td { padding: 9px 11px; }
     td:first-child { min-width: 150px; }
+    .tabla.is-apilada thead { display: none; }
+    .tabla.is-apilada table, .tabla.is-apilada tbody, .tabla.is-apilada tr, .tabla.is-apilada td { display: block; width: auto; min-width: 0; }
+    .tabla.is-apilada tr { padding: 6px 0; border-top: 1px solid rgba(21, 31, 71, .08); }
+    .tabla.is-apilada tr:first-child { border-top: 0; }
+    .tabla.is-apilada td { border: 0; padding: 4px 12px; }
+    .tabla.is-apilada td[data-label]::before { content: attr(data-label); display: block; font: 800 11px var(--f-sub); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
     .chart_hint { display: block; }
   }
   @media print {
@@ -234,7 +241,7 @@
     <div class="card"><h4><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i>Lo que creció</h4><p>Las visitas: 447 por día, el tramo más alto desde el lanzamiento, y 8,0 contactos por día. El aumento viene de la pauta pagada, que trae más de la mitad de las visitas.</p></div>
   </div>
   <div class="note is-info"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><p><strong>Lectura preliminar.</strong> El tramo posterior al bache tiene solo cuatro días, todos hábiles (lunes 19 a jueves 22). Por eso Google se compara contra los días hábiles de septiembre. Conviene confirmarlo el 30 de octubre con una semana completa.</p></div>
-  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>01</b> / 07</span></div>
+  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>01</b> / 08</span></div>
 </section>
 
 <section class="sec" id="google">
@@ -328,7 +335,7 @@
   <h3>Dónde están los clics que faltan</h3>
   <p>De los 27 clics por día hábil que faltan frente a septiembre, 16 son del artículo del IESS y 11 del resto del sitio. En el resto, las diferencias más grandes están en «12 calculadoras especializadas», la página de inicio y artículos antiguos del blog que Google muestra menos que antes (vacaciones, bonificación por desahucio, fondo global de jubilación).</p>
   <p>Como referencia, el tráfico orgánico ya venía bajando antes de la migración: 2.542 clics en junio y 1.841 en septiembre.</p>
-  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>02</b> / 07</span></div>
+  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>02</b> / 08</span></div>
 </section>
 
 <section class="sec" id="iess">
@@ -344,7 +351,7 @@
   </tbody></table></div>
   <p>Google lo muestra casi igual que en septiembre (92 % de las impresiones, en la misma posición), pero menos personas lo eligen: el CTR fue 1,1 % el lunes 19 y 2,0 % el jueves 22, frente a 2,4 % en septiembre. Con la misma posición y las mismas impresiones, la diferencia está en cuántas personas eligen el resultado. Hay dos explicaciones posibles: el título y la descripción que Google muestra para la dirección nueva, o que Google todavía esté reasignando las búsquedas a esa dirección. La subida de cada día apunta a la segunda.</p>
   <div class="note is-info"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><p><strong>Qué hacer.</strong> Seguir el CTR a diario hasta el 30 de octubre. Si para entonces no supera el 2 %, revisar el título y la descripción que muestra Google y comparar las búsquedas que lo encuentran con las de septiembre.</p></div>
-  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>03</b> / 07</span></div>
+  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>03</b> / 08</span></div>
 </section>
 
 <section class="sec" id="visitas">
@@ -397,7 +404,7 @@
   </tbody></table></div>
   <p class="chart_note">WhatsApp y teléfono son clics en esos botones (intención de contacto); formularios son envíos. El último tramo no tiene fines de semana, que suelen traer menos contactos, así que su promedio sale algo favorecido.</p>
   <div class="note is-info"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><p><strong>De dónde vienen los contactos.</strong> GA4 cuenta los contactos como eventos clave desde el 20 de octubre. Del 20 al 22 atribuye 20 de los 24 eventos clave a la pauta (13 a redes pagadas y 7 a búsqueda pagada) y 0 a los buscadores.</p></div>
-  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>04</b> / 07</span></div>
+  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>04</b> / 08</span></div>
 </section>
 
 <section class="sec" id="experiencia">
@@ -427,34 +434,61 @@
   <p>El informe Core Web Vitals (actualizado el 20 de octubre) marca en celular 371 direcciones lentas, 90 por mejorar y ninguna rápida; 461 tienen una respuesta al toque de más de 200 ms. En ordenador no hay direcciones lentas: 371 por mejorar y 90 rápidas. El informe usa los últimos 28 días, así que todavía mezcla días de WordPress y apenas refleja las mejoras de velocidad que se aplican desde el 15 de octubre (imágenes WebP, videos que cargan bajo demanda, fuentes propias). Aun así, las direcciones lentas en celular subieron de 235 (datos al 17 de octubre) a 371: hay que seguirlo cada semana.</p>
   <h3>Indexación</h3>
   <p>Al 15 de octubre, Google tenía 533 páginas indexadas. Entre las no indexadas hay 228 redirecciones (normal después de una migración), 89 versiones alternativas de otra página y 87 direcciones que dan error 404. El 20 de octubre se publicaron 39 redirecciones nuevas para las direcciones que Google pedía, así que la cifra de 404 debería bajar en la próxima actualización.</p>
-  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>05</b> / 07</span></div>
+  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>05</b> / 08</span></div>
+</section>
+
+<section class="sec" id="calculadoras">
+  <div class="sheet_head"><img src="https://cdn.prod.website-files.com/6967c96e0fba2ea4f94d3c69/6a70bbec17f7fc765c2ea5d9_logo-actuaria.svg" alt="Actuaria" width="120" height="25"><span>Estado de actuaria.com · 23 de octubre de 2026</span></div>
+  <p class="eyebrow">06 · Las calculadoras</p><h2>Las páginas que más visitan dependen de dos equipos</h2>
+  <p class="sec_intro">El artículo del IESS y las calculadoras son lo que más busca la gente que llega desde Google: el artículo trajo casi la mitad de los clics de septiembre y las calculadoras aparecen segundas en «calculadora jubilación patronal». Para que rindan hay que cuidar dos lados: el sitio web, que muestra el texto y carga cada calculadora, y las aplicaciones que hacen el cálculo, que se publican aparte en shinyapps.io.</p>
+  <h3>Lo que hizo el equipo web (23 de octubre)</h3>
+  <div class="cards">
+    <div class="card"><h4><i class="fa-solid fa-gauge-high" aria-hidden="true"></i>Carga más liviana</h4><p>«12 calculadoras especializadas» ya no abre las 12 aplicaciones a la vez, solo la que se ve: de 579 a 45 solicitudes y de 5,4 a 1,2 MB al cargar, y el contenido principal aparece en 1,1 s en vez de 3,9 s.</p></div>
+    <div class="card"><h4><i class="fa-solid fa-file-lines" aria-hidden="true"></i>Una página por calculadora</h4><p>Cada una tiene su propia dirección, en español e inglés, con qué calcula, cómo se calcula, las cifras de 2026, la base legal y preguntas frecuentes. Las direcciones antiguas de WordPress llevan a cada una, y el menú las agrupa en «Recursos → Calculadoras».</p></div>
+    <div class="card"><h4><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>Artículo del IESS al día</h4><p>Reescrito con la Resolución C.D. 683 y las cifras de 2026, con tablas, un ejemplo y enlaces al simulador. Se pidió a Google que lo vuelva a rastrear, junto con las páginas nuevas.</p></div>
+  </div>
+  <h3>Lo que necesitan las aplicaciones</h3>
+  <p>Al abrir cada aplicación se encontraron siete problemas. No se corrigen en el sitio web: los corrige quien construye y publica las calculadoras. Mientras tanto, las páginas nuevas avisan de los límites que afectan el resultado (impuesto a la renta, jubilación por vejez y jubilación patronal).</p>
+  <div class="tabla is-apilada"><table><thead><tr><th>Aplicación</th><th>Qué pasa</th><th>Efecto para quien la usa</th><th>Qué corregir</th></tr></thead><tbody>
+    <tr><td><strong>Impuesto a la renta</strong></td><td data-label="Qué pasa">Llega al año fiscal 2025: no tiene la tabla de 2026 (fracción básica de USD 12.208) ni la canasta de 2026.</td><td data-label="Efecto">Quien calcula su impuesto de 2026 obtiene una cifra de otro año.</td><td data-label="Qué corregir">Agregar la tabla y la rebaja de 2026.</td></tr>
+    <tr><td><strong>Aportes al IESS</strong></td><td data-label="Qué pasa">Aplica 20,60 % a los afiliados voluntarios (el IESS publica 17,60 %) y muestra un desglose por seguro anterior a las resoluciones vigentes.</td><td data-label="Efecto">Un afiliado voluntario ve un aporte más alto que el real.</td><td data-label="Qué corregir">Usar 17,60 % y el desglose de las resoluciones C.D. 501 y 515.</td></tr>
+    <tr><td><strong>Jubilación patronal</strong></td><td data-label="Qué pasa">Calcula con el 5 % de la remuneración y no suma el fondo de reserva ni resta lo que el empleador ya depositó.</td><td data-label="Efecto">La pensión estimada puede diferir de la que exige la norma.</td><td data-label="Qué corregir">Incluir el fondo de reserva, como piden el Acuerdo MDT-2016-0099 y la Corte Nacional.</td></tr>
+    <tr><td><strong>Jubilación por vejez del IESS</strong></td><td data-label="Qué pasa">El campo de años de aportes empieza en 20.</td><td data-label="Efecto">No se puede simular la jubilación a los 65 con 15 años ni a los 70 con 10.</td><td data-label="Qué corregir">Permitir desde 10 años de aportes.</td></tr>
+    <tr><td><strong>Despido intempestivo</strong></td><td data-label="Qué pasa">Cita el artículo 51 de la ley de discapacidades de 2012, derogada en julio de 2025.</td><td data-label="Efecto">Muestra una base legal que ya no rige.</td><td data-label="Qué corregir">Citar el artículo 56 de la Ley Orgánica de las Personas con Discapacidad de 2025.</td></tr>
+    <tr><td><strong>Vacaciones</strong></td><td data-label="Qué pasa">El valor por día no coincide con el artículo 71 del Código del Trabajo: con USD 400 da 13,50 en vez de 13,33.</td><td data-label="Efecto">La liquidación de vacaciones sale unos centavos por día más alta.</td><td data-label="Qué corregir">Revisar la fórmula (1/24 de lo percibido en el año).</td></tr>
+    <tr><td><strong>Fondo de pensiones del IESS</strong></td><td data-label="Qué pasa">Los datos llegan a 2018 (finanzas) y a 2022 (afiliados) y no dicen de dónde salen.</td><td data-label="Efecto">El panorama se ve desactualizado y sin respaldo.</td><td data-label="Qué corregir">Actualizar los datos y poner la fuente y la fecha de corte.</td></tr>
+  </tbody></table></div>
+  <div class="note is-warn"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><div><span class="note_t">Por qué importa</span><p>Son las páginas con más visitas desde Google. Una cifra desactualizada en la calculadora del impuesto a la renta o en la de aportes resta credibilidad justo donde más gente llega, aunque la página que la rodea esté al día.</p></div></div>
+  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>06</b> / 08</span></div>
 </section>
 
 <section class="sec" id="pasos">
   <div class="sheet_head"><img src="https://cdn.prod.website-files.com/6967c96e0fba2ea4f94d3c69/6a70bbec17f7fc765c2ea5d9_logo-actuaria.svg" alt="Actuaria" width="120" height="25"><span>Estado de actuaria.com · 23 de octubre de 2026</span></div>
-  <p class="eyebrow">06 · Próximos pasos</p><h2>Qué sigue</h2>
+  <p class="eyebrow">07 · Próximos pasos</p><h2>Qué sigue</h2>
   <ol class="rules">
     <li><b class="n">1</b><div><strong>Artículo del IESS.</strong> Seguir su CTR a diario hasta el 30 de octubre. Si no supera el 2 %, revisar el título y la descripción que muestra Google. Es el 59 % de los clics que faltan.</div><span class="tag t-web">Equipo web</span></li>
     <li><b class="n">2</b><div><strong>Velocidad en celular.</strong> Bajar el INP (480 ms; la meta es 200) y el LCP (3,0 s; la meta es 2,5): revisar scripts de terceros, animaciones y el peso de la primera pantalla.</div><span class="tag t-web">Equipo web</span></li>
-    <li><b class="n">3</b><div><strong>Resto del sitio.</strong> Revisar «12 calculadoras especializadas» y la página de inicio, que reciben menos clics que en septiembre, y los artículos antiguos que Google muestra menos.</div><span class="tag t-web">Equipo web</span></li>
-    <li><b class="n">4</b><div><strong>Pauta.</strong> Evaluar las redes pagadas por contactos conseguidos y no por visitas, con etiquetas de campaña (UTM) en anuncios y correos para atribuir bien cada contacto.</div><span class="tag t-mkt">Marketing y PMV</span></li>
-    <li><b class="n">5</b><div><strong>Confirmar el 30 de octubre</strong> con una semana completa de Search Console, GA4 y Clarity, y actualizar esta página.</div><span class="tag t-web">Equipo web</span></li>
+    <li><b class="n">3</b><div><strong>Resto del sitio.</strong> Seguir la página de inicio y los artículos antiguos que Google muestra menos. Las calculadoras ya tienen páginas propias y carga liviana: medir sus clics e impresiones el 30 de octubre y el 6 de noviembre.</div><span class="tag t-web">Equipo web</span></li>
+    <li><b class="n">4</b><div><strong>Aplicaciones de las calculadoras.</strong> Corregir los siete problemas de la sección 06, empezando por el impuesto a la renta de 2026 y la tasa de los afiliados voluntarios.</div><span class="tag t-app">Quien mantiene las calculadoras</span></li>
+    <li><b class="n">5</b><div><strong>Pauta.</strong> Evaluar las redes pagadas por contactos conseguidos y no por visitas, con etiquetas de campaña (UTM) en anuncios y correos para atribuir bien cada contacto.</div><span class="tag t-mkt">Marketing y PMV</span></li>
+    <li><b class="n">6</b><div><strong>Confirmar el 30 de octubre</strong> con una semana completa de Search Console, GA4 y Clarity, y actualizar esta página.</div><span class="tag t-web">Equipo web</span></li>
   </ol>
-  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>06</b> / 07</span></div>
+  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>07</b> / 08</span></div>
 </section>
 
 <section class="sec" id="fuentes">
   <div class="sheet_head"><img src="https://cdn.prod.website-files.com/6967c96e0fba2ea4f94d3c69/6a70bbec17f7fc765c2ea5d9_logo-actuaria.svg" alt="Actuaria" width="120" height="25"><span>Estado de actuaria.com · 23 de octubre de 2026</span></div>
-  <p class="eyebrow">07 · Fuentes y método</p><h2>De dónde sale cada cifra</h2>
+  <p class="eyebrow">08 · Fuentes y método</p><h2>De dónde sale cada cifra</h2>
   <ul>
     <li><strong>Search Console</strong> (propiedad <code>https://actuaria.com/</code>): datos diarios del 1 de septiembre al 22 de octubre, leídos el 23 de octubre. Los promedios son de días hábiles (lunes a viernes) y la posición está ponderada por impresiones. El artículo del IESS se mide con el filtro «la página contiene calculo-de-pensiones-de-iess», que suma la dirección vieja y la nueva.</li>
     <li><strong>Google Analytics 4</strong> (propiedad de Actuaria): informes de adquisición de tráfico y de eventos para cada tramo; promedios por día calendario.</li>
     <li><strong>Microsoft Clarity</strong>: panel de los últimos 22 días (2 al 23 de octubre) y de los últimos 7 días, sin las sesiones de bots que Clarity excluye.</li>
     <li><strong>Core Web Vitals</strong>: informe de Search Console con datos de Chrome, actualizado el 20 de octubre (ventana de 28 días). <strong>Indexación</strong>: actualizada el 15 de octubre.</li>
+    <li><strong>Calculadoras</strong>: cada aplicación de shinyapps.io se abrió el 23 de octubre con sus valores por defecto y se comparó con la norma vigente (Código del Trabajo, LORTI, resoluciones del IESS y del SRI). La carga de la página se midió antes y después del cambio con Chrome.</li>
     <li><strong>Tramos</strong>: septiembre, en WordPress; 2 al 8 de octubre, primera semana en Webflow (el sitio se lanzó la noche del 1); 9 al 18 de octubre, bache; 19 al 22 de octubre, después del bache.</li>
   </ul>
   <p>El estado del sitio y los pendientes con responsable están en el <a href="https://renatopuente-ux.github.io/actuaria-web-entrega/">Acta de Entrega</a>, y el análisis del bache con su respaldo, en la <a href="https://renatopuente-ux.github.io/actuaria-web-respuesta-analisis/">respuesta del 20 de octubre</a>.</p>
-  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>07</b> / 07</span></div>
+  <div class="sheet_foot"><span>Área de Producto · Actuaria Consultores</span><span><b>08</b> / 08</span></div>
 </section>
 
 </main></div>
