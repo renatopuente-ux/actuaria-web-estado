@@ -65,7 +65,20 @@
   .ficha_label i { color: var(--orange); margin-right: 8px; }
 
   /* Sheets */
-  .layout { max-width: 1040px; margin: 0 auto; padding: 40px 24px 20px; }
+  .layout { max-width: 1320px; margin: 0 auto; padding: 40px 24px 20px; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 36px; align-items: start; }
+  /* Section index, same as the Acta de Entrega: sticky column on wide screens, a «Contenido» drop-down below 1180 px. */
+  .toc { position: sticky; top: 20px; max-height: calc(100vh - 40px); overflow: auto; padding: 18px 12px; background: var(--bg); border-radius: 18px; box-shadow: var(--neu-sm); }
+  .toc_title { font: 900 11px var(--f-sub); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); margin: 0 8px 10px; }
+  .toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; }
+  .toc li { margin: 0; counter-increment: toc; }
+  .toc a { display: flex; gap: 10px; align-items: baseline; padding: 6px 8px; border-radius: 10px; font: 700 13.5px var(--f-sub); color: var(--ink-2); text-decoration: none; }
+  .toc a::before { content: counter(toc, decimal-leading-zero); font-size: 11px; font-weight: 900; color: var(--ink-3); min-width: 18px; }
+  .toc a:hover { background: var(--box); color: var(--navy); }
+  .toc a.is-active { background: var(--navy); color: #fff; }
+  .toc a.is-active::before { color: var(--orange-soft); }
+  .toc a:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+  .toc_mobile { display: none; }
+  .sec { scroll-margin-top: 16px; }
   .sec { background: var(--bg); border-radius: 22px; box-shadow: var(--neu); padding: 26px 46px 22px; margin-bottom: 30px; }
   .sheet_head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 14px; margin-bottom: 30px; border-bottom: 1px solid var(--line); }
   .sheet_head img { height: 22px; width: auto; display: block; }
@@ -162,6 +175,17 @@
 
   footer.pie { padding: 0 24px 48px; text-align: center; font-size: 13.5px; color: var(--ink-3); }
 
+  @media screen and (max-width: 1180px) {
+    .layout { grid-template-columns: minmax(0, 1fr); gap: 0; max-width: 1040px; }
+    .toc { display: none; }
+    .toc_mobile { display: block; margin-bottom: 22px; background: var(--bg); border-radius: 16px; box-shadow: var(--neu-sm); }
+    .toc_mobile summary { cursor: pointer; padding: 14px 18px; font: 800 15px var(--f-sub); color: var(--navy); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .toc_mobile summary::-webkit-details-marker { display: none; }
+    .toc_mobile[open] summary i { transform: rotate(180deg); }
+    .toc_mobile ol { margin: 0; padding: 0 18px 14px 40px; }
+    .toc_mobile li { margin: 6px 0; }
+    .toc_mobile a { font: 700 14px var(--f-sub); text-decoration: none; color: var(--ink-2); }
+  }
   @media screen and (max-width: 900px) {
     .sec { padding: 22px 24px 18px; }
     .kpis, .cover_kpis, .cover_grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -201,8 +225,8 @@
   }
   @media print {
     body { background: #fff; font-size: 12.5px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .sheet_head, .sheet_foot, .tip, details.datos, footer.pie { display: none !important; }
-    .layout { padding: 0; }
+    .sheet_head, .sheet_foot, .tip, details.datos, footer.pie, .toc, .toc_mobile { display: none !important; }
+    .layout { display: block; max-width: none; padding: 0; }
     .sec { break-before: page; background: transparent; box-shadow: none; border-radius: 0; padding: 0; margin: 0; }
     .card, .kpi, .chart, .rules li { box-shadow: none; border: 1px solid rgba(21, 31, 71, .1); }
     .card, .kpi, .chart, .rules li, tr, .note { break-inside: avoid; }
@@ -231,7 +255,25 @@
     </div>
   </div>
 </header>
-<div class="layout"><main>
+<div class="layout">
+<nav class="toc" aria-label="Contenido">
+  <p class="toc_title">Contenido</p>
+  <ol id="toc-list">
+    <li><a href="#respuesta">Respuesta corta</a></li>
+    <li><a href="#google">Google</a></li>
+    <li><a href="#iess">Artículo del IESS</a></li>
+    <li><a href="#visitas">Visitas y contactos</a></li>
+    <li><a href="#experiencia">Experiencia y velocidad</a></li>
+    <li><a href="#calculadoras">Calculadoras</a></li>
+    <li><a href="#pasos">Próximos pasos</a></li>
+    <li><a href="#fuentes">Fuentes y método</a></li>
+  </ol>
+</nav>
+<main>
+<details class="toc_mobile">
+  <summary>Contenido <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+  <ol id="toc-mobile-list"></ol>
+</details>
 
 <section class="sec" id="respuesta">
   <div class="sheet_head"><img src="https://cdn.prod.website-files.com/6967c96e0fba2ea4f94d3c69/6a70bbec17f7fc765c2ea5d9_logo-actuaria.svg" alt="Actuaria" width="120" height="25"><span>Estado de actuaria.com · 23 de octubre de 2026</span></div>
@@ -520,5 +562,32 @@ document.querySelectorAll('[data-serie]').forEach(function (chart) {
   });
   chart.querySelector('svg').addEventListener('pointerleave', ocultar);
 });
+// Section index (same as the Acta de Entrega): copies the list into the mobile drop-down, closes it after a choice, and
+// highlights the section being read.
+(function () {
+  var desk = document.getElementById('toc-list'), mob = document.getElementById('toc-mobile-list');
+  if (desk && mob) {
+    mob.innerHTML = desk.innerHTML;
+    mob.addEventListener('click', function (e) {
+      if (e.target.closest('a')) mob.closest('details').removeAttribute('open');
+    });
+  }
+  var links = [].slice.call(document.querySelectorAll('.toc a'));
+  if (!('IntersectionObserver' in window) || !links.length) return;
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      links.forEach(function (a) { a.classList.remove('is-active'); });
+      var a = byId[en.target.id];
+      if (a) a.classList.add('is-active');
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  Object.keys(byId).forEach(function (id) {
+    var s = document.getElementById(id);
+    if (s) io.observe(s);
+  });
+})();
 </script>
 </body></html>
